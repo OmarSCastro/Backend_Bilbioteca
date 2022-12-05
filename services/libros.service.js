@@ -13,12 +13,16 @@ class LibrosService {
     };
 
     async find(){
-        const rta = await models.Libro.findAll();
+        const rta = await models.Libro.findAll({
+            include: ['editorial', 'autores']
+        });
         return rta;
     };
-
+    
     async findOne(id_libros){
-        const res = await models.Libro.findByPk(id_libros);
+        const res = await models.Libro.findByPk(id_libros, {
+            include: ['editorial', 'autores' ]
+        });
         if (!res) {
            boom.notFound('Libro no encontrado') 
         };

@@ -13,12 +13,16 @@ class AutoresService {
     };
 
     async find(){
-        const rta = await models.Autor.findAll(); 
+        const rta = await models.Autor.findAll({
+            includes: ['libros_autores']
+        }); 
         return rta
     };
-
+    
     async findOne(id){
-        const res = await models.Autor.findByPk(id);
+        const res = await models.Autor.findByPk(id, {
+            includes: ['libros_autores']
+        });
         if (!res) {
             boom.notFound('Autor No Encontrado')
         };

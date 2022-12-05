@@ -12,7 +12,9 @@ class UsuariosService {
     };
 
     async find(){
-        const rta = await models.Usuario.findAll();
+        const rta = await models.Usuario.findAll({
+            include:['usuario_usuarioLibro']
+        });
         return rta;
     };
 

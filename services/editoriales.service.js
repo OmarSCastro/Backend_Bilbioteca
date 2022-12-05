@@ -18,7 +18,9 @@ class EditorialesService {
     };
 
     async findOne(id){
-        const res = await models.Editorial.findByPk(id);
+        const res = await models.Editorial.findByPk(id, {
+            includes: ['libros']
+        });
         if (!res) {
             throw boom.notFound('Editorial Not Found');
         }

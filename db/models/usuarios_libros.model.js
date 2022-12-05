@@ -27,8 +27,8 @@ const UsuariosLibrosSchema = {
     },
     
     id_usuarios:{
-        allowNull: false,
         field: 'id_usuarios',
+        allowNull: false,
         type:DataTypes.INTEGER,
         references: {
             model: USUARIO_TABLE,
@@ -39,15 +39,17 @@ const UsuariosLibrosSchema = {
     },
 };
 
-class UsuarioLibro extends model{
+class UsuarioLibro extends Model{
 
     static associate(models){
 
-        this.belongsTo(models.Usuario,
-            {
-                as:'usuario'
-            })
+        this.hasMany(models.Libro, {
+            as:'Libro'
+        });
 
+        this.belongsTo(models.Usuario,{
+            as:'usuario'
+        });
     };
 
     static config(sequelize){

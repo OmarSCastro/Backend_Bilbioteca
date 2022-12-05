@@ -13,7 +13,9 @@ class UsuariosLibros{
     };   
 
     async find(){
-        const rta = await models.UsuarioLibro.findAll();
+        const rta = await models.UsuarioLibro.findAll({
+            include: ['usuario']
+        });
         return rta;
     };
 

@@ -1,5 +1,6 @@
 const {Model, DataTypes, Sequelize}= require('sequelize');
 
+
 const EDITORIAL_TABLE = 'editoriales';
 
 const EditorialSchema = {
@@ -27,7 +28,10 @@ const EditorialSchema = {
 class Editorial extends Model {
 
     static associate(models){
-
+        this.hasMany(models.Libro, {
+            as: 'libros',
+            foreignKey: 'editorial_id'
+        })
     }
 
     static config(sequelize){

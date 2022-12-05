@@ -26,7 +26,10 @@ const AutorSchema = {
 class Autor extends Model {
 
     static associate(models){
-
+        this.hasMany(models.Libro, {
+            as: 'libros_autores',
+            foreignKey: 'autor_id'
+        })
     }
 
     static config(sequelize){

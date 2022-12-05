@@ -12,7 +12,11 @@ function setupModels( sequelize ){
     UsuarioLibro.init(UsuariosLibrosSchema, UsuarioLibro.config(sequelize));
 
     
-
+    UsuarioLibro.associate(sequelize.models);
+    Usuario.associate(sequelize.models);
+    Editorial.associate(sequelize.models);
+    Libro.associate(sequelize.models);
+    Autor.associate(sequelize.models)
 }
 
 module.exports = setupModels;

@@ -37,7 +37,10 @@ const UsuarioSchema = {
 class Usuario extends Model {
 
     static associate(models){
-
+        this.hasOne(models.UsuarioLibro, {
+            as: 'usuario_usuarioLibro',
+            foreignKey: 'id_usuarios'
+        })
     };
 
     static config(sequelize){
